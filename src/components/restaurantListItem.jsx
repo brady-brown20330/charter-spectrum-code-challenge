@@ -3,9 +3,12 @@ import RestaurantList from './restaurantList.jsx';
 
 const RestaurantListItem = (props) => {
   return (
-    <div>
-      {props.item.name}
-    </div>
+      <tr key={props.key}>
+        <td>{props.item.name}</td>
+        <td>{props.item.city}</td>
+        <td>{props.item.telephone}</td>
+        <td>{props.item.genre}</td>
+      </tr>
   )
 }
 

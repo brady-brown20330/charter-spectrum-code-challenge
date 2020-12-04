@@ -4,7 +4,7 @@ import Axios from 'axios';
 
 import RestaurantListItem from './components/restaurantListItem.jsx';
 import RestaurantList from './components/restaurantList.jsx';
-
+import Styles from '../public/App.css'
 const App = () => {
 
 const [restaurants, setRestaurants] = useState([]);

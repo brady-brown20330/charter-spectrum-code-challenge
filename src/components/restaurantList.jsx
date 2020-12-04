@@ -3,11 +3,23 @@ import RestaurantListItem from './restaurantListItem.jsx';
 
 const RestaurantList = (props) => {
   return (
-    <div>
+    <table>
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Phone</th>
+        <th>Genre</th>
+        </tr>
+      </thead>
+
+    <tbody>
     {props.list.map((item, key) => (
-    <RestaurantListItem item={item}/>
+    <RestaurantListItem item={item} key={key}/>
+
   ))}
-    </div>
+    </tbody>
+    </table>
   )
 }
 
