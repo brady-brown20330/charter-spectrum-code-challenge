@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-let FilterByName = (props) => {
+let FilterByGenre = (props) => {
 const [open, setOpen] = useState(false)
 
 const handleClick = () => {
@@ -15,7 +15,7 @@ const handleClick = () => {
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>
-      Filter by Name:
+      Filter by Genre:
       </button>
       </div>
     )
@@ -24,12 +24,12 @@ const handleClick = () => {
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>
-        Filter by Name:
+        Filter by Genre:
       </button>
       <div className="dropdown">
         <ul>
           {props.list.map((item) => (
-            <li onClick={function() { props.handleListItemClick(item.name, 'name') }}>{item.name}</li>
+            <li onClick={function() { props.handleListItemClick(item.genre, 'genre') }}>{item.genre}</li>
           ))}
         </ul>
       </div>
@@ -39,4 +39,4 @@ const handleClick = () => {
   }
 }
 
-export default FilterByName;
+export default FilterByGenre;
