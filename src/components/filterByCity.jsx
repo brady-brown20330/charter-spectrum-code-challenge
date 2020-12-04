@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-let Filters = (props) => {
+let FilterByCity = (props) => {
 const [open, setOpen] = useState(false)
 
 const handleClick = () => {
@@ -15,7 +15,7 @@ const handleClick = () => {
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>
-      Filter by Name:
+        Filter by City:
       </button>
       </div>
     )
@@ -24,20 +24,19 @@ const handleClick = () => {
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>
-        Filter by Name:
+        Filter by City:
       </button>
-       {open && (
       <div className="dropdown">
         <ul>
           {props.list.map((item) => (
-            <li onClick={function() { props.handleListItemClick(item.name) }}>{item.name}</li>
+            <li onClick={function() { props.handleListItemClick(item.city, "city") }}>{item.city}</li>
           ))}
         </ul>
       </div>
-    )}
     </div>
+
     )
   }
 }
 
-export default Filters;
+export default FilterByCity;

@@ -3,7 +3,7 @@ import RestaurantList from './restaurantList.jsx';
 
 const RestaurantListItem = (props) => {
   return (
-      <tr class="border_bottom">
+      <tr className="border_bottom">
         <td>{props.item.name}</td>
         <td>{props.item.city}</td>
         <td>{props.item.telephone}</td>

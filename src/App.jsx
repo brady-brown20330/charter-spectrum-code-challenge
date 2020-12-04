@@ -4,15 +4,15 @@ import Axios from 'axios';
 
 import RestaurantListItem from './components/restaurantListItem.jsx';
 import RestaurantList from './components/restaurantList.jsx';
-import Filters from './components/filters.jsx';
+import FilterByName from './components/filterByName.jsx';
+import FilterByCity from './components/filterByCity.jsx';
 
 const App = () => {
 
 const [restaurants, setRestaurants] = useState([]);
 
-const handleListItemClick = (item) => {
-  console.log(item)
-  const filteredRestaurants = restaurants.filter(e => e.name.includes(item))
+const handleListItemClick = (item, searchString) => {
+  const filteredRestaurants = restaurants.filter(row => row[searchString].includes(item))
   setRestaurants(filteredRestaurants)
 }
 
@@ -54,7 +54,8 @@ const handleFilterReset = () => {
   return (
     <div>
       <button onClick={function() { handleFilterReset() }}>Reset Filters</button>
-      <Filters list={restaurants} handleListItemClick={handleListItemClick}/>
+      <FilterByName list={restaurants} handleListItemClick={handleListItemClick}/>
+      <FilterByCity list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>
     </div>
 
