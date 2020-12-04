@@ -6,6 +6,7 @@ const RestaurantListItem = (props) => {
       <tr className="border_bottom">
         <td>{props.item.name}</td>
         <td>{props.item.city}</td>
+        <td>{props.item.state}</td>
         <td>{props.item.telephone}</td>
         <td>{props.item.genre}</td>
       </tr>

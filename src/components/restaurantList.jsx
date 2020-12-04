@@ -8,6 +8,7 @@ const RestaurantList = (props) => {
         <tr>
         <th>Name</th>
         <th>City</th>
+        <th>State</th>
         <th>Phone</th>
         <th>Genre</th>
         </tr>
