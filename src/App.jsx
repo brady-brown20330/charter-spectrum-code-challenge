@@ -15,6 +15,23 @@ const handleListItemClick = (item) => {
   const filteredRestaurants = restaurants.filter(e => e.name.includes(item))
   setRestaurants(filteredRestaurants)
 }
+
+const handleFilterReset = () => {
+    Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
+      headers: {
+        Authorization: `${Key}`,
+      }
+    })
+    .then(data => {
+      data.data.sort(function(a, b){
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    })
+      setRestaurants(data.data)
+      // console.log(data.data)
+    })
+}
   useEffect(() => {
     Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
@@ -36,6 +53,7 @@ const handleListItemClick = (item) => {
 
   return (
     <div>
+      <button onClick={function() { handleFilterReset() }}>Reset Filters</button>
       <Filters list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>
     </div>
