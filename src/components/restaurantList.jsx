@@ -12,7 +12,6 @@ const RestaurantList = (props) => {
         <th>Genre</th>
         </tr>
       </thead>
-
     <tbody>
     {props.list.map((item, key) => (
     <RestaurantListItem item={item} key={key}/>

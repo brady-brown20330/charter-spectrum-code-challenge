@@ -4,6 +4,7 @@ import Axios from 'axios';
 
 import RestaurantListItem from './components/restaurantListItem.jsx';
 import RestaurantList from './components/restaurantList.jsx';
+import Filters from './components/filters.jsx';
 
 const App = () => {
 
@@ -23,7 +24,7 @@ const [restaurants, setRestaurants] = useState([]);
         return 0;
     })
       setRestaurants(data.data)
-      console.log(data.data)
+      // console.log(data.data)
     })
   }, [])
 
@@ -31,6 +32,7 @@ const [restaurants, setRestaurants] = useState([]);
 
   return (
     <div>
+      <Filters list={restaurants}/>
       <RestaurantList list={restaurants}/>
     </div>
 
