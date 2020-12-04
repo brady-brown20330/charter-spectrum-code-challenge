@@ -9,6 +9,7 @@ const App = () => {
 
 const [restaurants, setRestaurants] = useState([]);
 
+
   useEffect(() => {
     Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
@@ -16,6 +17,11 @@ const [restaurants, setRestaurants] = useState([]);
       }
     })
     .then(data => {
+      data.data.sort(function(a, b){
+        if(a.name < b.name) { return -1; }
+        if(a.name > b.name) { return 1; }
+        return 0;
+    })
       setRestaurants(data.data)
       console.log(data.data)
     })
