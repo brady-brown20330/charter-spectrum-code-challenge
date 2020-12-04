@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 let Filters = (props) => {
 const [open, setOpen] = useState(false)
-console.log('here is open: ', open)
+
 const handleClick = () => {
   if (open === false) {
     setOpen(true)
@@ -10,6 +10,7 @@ const handleClick = () => {
     setOpen(false)
   }
 }
+
   if (open === false) {
     return (
       <div className="container">
@@ -29,7 +30,7 @@ const handleClick = () => {
       <div className="dropdown">
         <ul>
           {props.list.map((item) => (
-            <li>{item.name}</li>
+            <li onClick={function() { props.handleListItemClick(item.name) }}>{item.name}</li>
           ))}
         </ul>
       </div>

@@ -10,7 +10,11 @@ const App = () => {
 
 const [restaurants, setRestaurants] = useState([]);
 
-
+const handleListItemClick = (item) => {
+  console.log(item)
+  const filteredRestaurants = restaurants.filter(e => e.name.includes(item))
+  setRestaurants(filteredRestaurants)
+}
   useEffect(() => {
     Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
@@ -32,7 +36,7 @@ const [restaurants, setRestaurants] = useState([]);
 
   return (
     <div>
-      <Filters list={restaurants}/>
+      <Filters list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>
     </div>
 
