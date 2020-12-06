@@ -3,7 +3,7 @@ import RestaurantListItem from './restaurantListItem.jsx';
 
 const RestaurantList = (props) => {
   return (
-    <table>
+    <table className="content-table">
       <thead>
         <tr>
         <th>Name</th>

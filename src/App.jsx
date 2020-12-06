@@ -50,8 +50,8 @@ const retrieveAllRestaurants = () => {
 
   return (
     <div>
-      <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
       <SearchField inputHandler={handleSearchInput} />
+      <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
       <FilterByState list={restaurants} handleListItemClick={handleListItemClick}/>
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>

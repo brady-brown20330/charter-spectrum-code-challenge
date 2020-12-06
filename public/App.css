@@ -1,28 +1,54 @@
-table {
-    margin-left:auto;
-    margin-right:auto;
-    text-align: center;
-    border-collapse: collapse;
+/*********
+Table CSS:
+**********/
+.content-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: 25px;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
+.content-table thead tr {
+  background-color: royalblue;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
 }
 
-td {
-    border-bottom: 1pt solid black;
-  }
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
 
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid royalblue;
+}
+/* optional: add className active-row on click to highlight row */
+/* .content-table tbody tr.active-row {
+  font-weight: bold;
+  color: royalblue;
+} */
+
+/****************
+Dropdown menu CSS:
+*****************/
   .container {
     position: relative;
     display: inline-block;
   }
-  .button {
-    padding: 0;
-    cursor: pointer;
-  }
+
 
   .dropdown {
     position: absolute;
@@ -50,6 +76,15 @@ td {
   li:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
+  }
+
+  /**********
+  Button CSS:
+  **********/
+  button {
+    font-family:courier,arial,helvetica;
+    padding: 5px;
+    margin: 10px;
   }
 
   button.reset {
