@@ -48,7 +48,10 @@ const retrieveAllRestaurants = () => {
     if (inputText === '') {
       retrieveAllRestaurants();
     } else {
-      const filteredRestaurants = restaurants.filter(row => row.name.toLowerCase().includes(inputText.toLowerCase()))
+      const filteredRestaurants = restaurants.filter(row => row.name.toLowerCase().includes(inputText.toLowerCase()) ||
+      row.city.toLowerCase().includes(inputText.toLowerCase()) ||
+      row.genre.toLowerCase().includes(inputText.toLowerCase())
+      )
       setRestaurants(filteredRestaurants)
     }
   }

@@ -124,7 +124,6 @@ Dropdown menu CSS:
   /***************
   Input Field CSS:
   ***************/
-/*
   input {
-
-  } */
+    width: 20em;
+  }
