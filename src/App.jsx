@@ -11,19 +11,7 @@ import SearchField from './components/searchField.jsx';
 
 const App = () => {
 const [restaurants, setRestaurants] = useState([]);
-const [searchInput, setSearchInput] = useState('');
-
-const handleListItemClick = (item, searchString) => {
-  console.log(item)
-  const filteredRestaurants = restaurants.filter(row => row[searchString].includes(item))
-  setRestaurants(filteredRestaurants)
-}
-
-const handleSearchInput = (e) => {
-  setSearchInput(e.target.value)
-  console.log(e.target.value)
-}
-
+const [inputText, setInputText] = useState('');
 
 //retrieves all restaurants and sorts them alphabetically by name
 const retrieveAllRestaurants = () => {
@@ -41,16 +29,35 @@ const retrieveAllRestaurants = () => {
     setRestaurants(data.data)
   })
 }
-
+//initial render
   useEffect(() => {
     retrieveAllRestaurants()
   }, [])
+  //triggers a filter based off of the item that was clicked
+  const handleListItemClick = (item, searchString) => {
+    console.log(item)
+    const filteredRestaurants = restaurants.filter(row => row[searchString].includes(item))
+    setRestaurants(filteredRestaurants)
+  }
+  //updates state based on what is typed in the input field
+  const handleSearchInput = (e) => {
+    setInputText(e.target.value)
+  }
+  //submit button handler
+  const handleSubmit = () => {
+    if (inputText === '') {
+      retrieveAllRestaurants();
+    } else {
+      const filteredRestaurants = restaurants.filter(row => row.name.toLowerCase().includes(inputText.toLowerCase()))
+      setRestaurants(filteredRestaurants)
+    }
+  }
 
 
 
   return (
     <div>
-      <SearchField inputHandler={handleSearchInput} />
+      <SearchField handleSearchInput={handleSearchInput} handleSubmit={handleSubmit}/>
       <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
       <FilterByState list={restaurants} handleListItemClick={handleListItemClick}/>
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>

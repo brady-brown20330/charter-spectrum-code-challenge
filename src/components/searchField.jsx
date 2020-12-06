@@ -3,8 +3,8 @@ import React from 'react';
 const SearchField = (props) => {
   return (
     <div>
-      <input onChange={props.inputHandler}></input>
-      <button>Submit</button>
+      <input onChange={props.handleSearchInput}></input>
+      <button onClick={props.handleSubmit}>Submit</button>
     </div>
   )
 }
