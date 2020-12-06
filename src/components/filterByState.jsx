@@ -20,7 +20,6 @@ const handleClick = () => {
       </div>
     )
   } else {
-    console.log(props.list)
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>

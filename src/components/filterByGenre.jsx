@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 let FilterByGenre = (props) => {
 const [open, setOpen] = useState(false)
-
+const splitGenres = [];
 const handleClick = () => {
   if (open === false) {
     setOpen(true)
@@ -10,6 +10,21 @@ const handleClick = () => {
     setOpen(false)
   }
 }
+
+const splitTheGenres = () => {
+  for (var i = 0; i < props.list.length; i++) {
+    console.log('here are the genres: ', props.list[i].genre)
+    let row =  props.list[i].genre
+    row = row.split(',')
+    console.log(row)
+    for (var j = 0; j < row.length; j++) {
+      if (splitGenres.indexOf(row[j]) === - 1) {
+        splitGenres.push(row[j])
+      }
+    }
+  }
+}
+splitTheGenres();
 
   if (open === false) {
     return (
@@ -20,7 +35,6 @@ const handleClick = () => {
       </div>
     )
   } else {
-    console.log(props.list)
     return (
       <div className="container">
       <button type="button" className="button" onClick={function () { handleClick() }}>
@@ -28,8 +42,8 @@ const handleClick = () => {
       </button>
       <div className="dropdown">
         <ul>
-          {props.list.map((item) => (
-            <li onClick={function() { props.handleListItemClick(item.genre, 'genre') }}>{item.genre}</li>
+          {splitGenres.map((item) => (
+            <li onClick={function() { props.handleListItemClick(item, 'genre') }}>{item}</li>
           ))}
         </ul>
       </div>

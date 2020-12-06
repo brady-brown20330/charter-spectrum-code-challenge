@@ -12,48 +12,45 @@ const App = () => {
 const [restaurants, setRestaurants] = useState([]);
 
 const handleListItemClick = (item, searchString) => {
+  console.log(item)
   const filteredRestaurants = restaurants.filter(row => row[searchString].includes(item))
   setRestaurants(filteredRestaurants)
 }
 
-const handleFilterReset = () => {
-    Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
-      headers: {
-        Authorization: `${Key}`,
-      }
-    })
-    .then(data => {
-      data.data.sort(function(a, b){
-        if(a.name < b.name) { return -1; }
-        if(a.name > b.name) { return 1; }
-        return 0;
-    })
-      setRestaurants(data.data)
-      // console.log(data.data)
-    })
+/*
+  const filteredRestaurants = restaurants.filter(row => {
+    row[searchString] = row[searchString].split(",")
+    return row[searchString].includes(item)
+  })
+*/
+
+
+//retrieves all restaurants and sorts them alphabetically by name
+const retrieveAllRestaurants = () => {
+  Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
+    headers: {
+      Authorization: `${Key}`,
+    }
+  })
+  .then(data => {
+    data.data.sort(function(a, b){
+      if(a.name < b.name) { return -1; }
+      if(a.name > b.name) { return 1; }
+      return 0;
+  })
+    setRestaurants(data.data)
+  })
 }
+
   useEffect(() => {
-    Axios.get('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
-      headers: {
-        Authorization: `${Key}`,
-      }
-    })
-    .then(data => {
-      data.data.sort(function(a, b){
-        if(a.name < b.name) { return -1; }
-        if(a.name > b.name) { return 1; }
-        return 0;
-    })
-      setRestaurants(data.data)
-      // console.log(data.data)
-    })
+    retrieveAllRestaurants()
   }, [])
 
 
 
   return (
     <div>
-      <button onClick={function() { handleFilterReset() }}>Reset Filters</button>
+      <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
       <FilterByState list={restaurants} handleListItemClick={handleListItemClick}/>
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>

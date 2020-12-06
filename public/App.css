@@ -51,3 +51,7 @@ td {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
   }
+
+  button.reset {
+    background-color: red;
+  }
