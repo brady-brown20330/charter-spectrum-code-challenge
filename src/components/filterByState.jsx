@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 let FilterByState = (props) => {
 const [open, setOpen] = useState(false)
-
+let states = [];
 const handleClick = () => {
   if (open === false) {
     setOpen(true)
@@ -10,6 +10,16 @@ const handleClick = () => {
     setOpen(false)
   }
 }
+
+const getAllStates = () => {
+  for (var i = 0; i < props.list.length; i++) {
+    console.log('an entry: ', props.list[i].state)
+    if (states.indexOf(props.list[i].state) === -1) {
+      states.push(props.list[i].state)
+    }
+  }
+}
+getAllStates()
 
   if (open === false) {
     return (
@@ -27,8 +37,8 @@ const handleClick = () => {
       </button>
       <div className="dropdown">
         <ul>
-          {props.list.map((item) => (
-            <li onClick={function() { props.handleListItemClick(item.state, "state") }}>{item.state}</li>
+          {states.map((item) => (
+            <li onClick={function() { props.handleListItemClick(item, "state") }}>{item}</li>
           ))}
         </ul>
       </div>

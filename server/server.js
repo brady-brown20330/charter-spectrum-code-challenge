@@ -7,7 +7,7 @@ app.get('./endpoint', )
 
 
 app.listen(PORT, () => {
-  console.log(`Hello, Scrumdog. Your server is running on PORT: ${PORT}`);
+  console.log(`Hello, Your server is running on PORT: ${PORT}`);
 });
 
 // app.use(bodyParser.urlencoded({ extended: true }));
