@@ -13,10 +13,8 @@ const handleClick = () => {
 
 const splitTheGenres = () => {
   for (var i = 0; i < props.list.length; i++) {
-    console.log('here are the genres: ', props.list[i].genre)
     let row =  props.list[i].genre
     row = row.split(',')
-    console.log(row)
     for (var j = 0; j < row.length; j++) {
       if (splitGenres.indexOf(row[j]) === - 1) {
         splitGenres.push(row[j])

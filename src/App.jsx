@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import Key from '../server/APIkey.js';
 import Axios from 'axios';
 
+//component imports
 import RestaurantListItem from './components/restaurantListItem.jsx';
 import RestaurantList from './components/restaurantList.jsx';
 import FilterByGenre from './components/filterByGenre.jsx';
 import FilterByState from './components/filterByState.jsx';
+import SearchField from './components/searchField.jsx';
 
 const App = () => {
-
 const [restaurants, setRestaurants] = useState([]);
+const [searchInput, setSearchInput] = useState('');
 
 const handleListItemClick = (item, searchString) => {
   console.log(item)
@@ -17,12 +19,10 @@ const handleListItemClick = (item, searchString) => {
   setRestaurants(filteredRestaurants)
 }
 
-/*
-  const filteredRestaurants = restaurants.filter(row => {
-    row[searchString] = row[searchString].split(",")
-    return row[searchString].includes(item)
-  })
-*/
+const handleSearchInput = (e) => {
+  setSearchInput(e.target.value)
+  console.log(e.target.value)
+}
 
 
 //retrieves all restaurants and sorts them alphabetically by name
@@ -51,6 +51,7 @@ const retrieveAllRestaurants = () => {
   return (
     <div>
       <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
+      <SearchField inputHandler={handleSearchInput} />
       <FilterByState list={restaurants} handleListItemClick={handleListItemClick}/>
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>
       <RestaurantList list={restaurants}/>
