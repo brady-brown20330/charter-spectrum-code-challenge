@@ -58,7 +58,7 @@ const retrieveAllRestaurants = () => {
 
   return (
     <div>
-      <h1>Search Our List of Restaurants:</h1>
+      <h1>Search Our Spectrum of Restaurants:</h1>
      <div className="app-bar">
      <SearchField handleSearchInput={handleSearchInput} handleSubmit={handleSubmit}/>
       <button className="reset" onClick={function() { retrieveAllRestaurants() }}>Reset Filters</button>
