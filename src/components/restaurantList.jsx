@@ -27,6 +27,11 @@ const handlePrevious = () => {
   console.log(pageRange)
   }
 
+//  if (props.list.length < 1) {
+//    return (
+//      <h1>Looks like we couldnt find any matches. Try resetting filters and try again</h1>
+//    )
+//  }
   return (
     <div>
       <button onClick={function () { handlePrevious() }}>Previous</button>
@@ -42,13 +47,14 @@ const handlePrevious = () => {
             </tr>
           </thead>
         <tbody>
-        {props.list.slice(pageRange[0], pageRange[1]).map((item, key) => (
+        {props.list.length > 0 ? props.list.slice(pageRange[0], pageRange[1]).map((item, key) => (
         <RestaurantListItem item={item} key={key}/>
-      ))}
+      )) : <h2 style={{textAlign: "center"}}>Looks like we couldnt find any matches. Try resetting filters and try again</h2>}
         </tbody>
         </table>
     </div>
       )
+
 }
 
 
