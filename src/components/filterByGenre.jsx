@@ -40,7 +40,7 @@ splitTheGenres();
       </button>
       <div className="dropdown">
         <ul>
-          {splitGenres.map((item) => (
+          {splitGenres.map((item, key) => (
             <li onClick={function() { props.handleListItemClick(item, 'genre') }}>{item}</li>
           ))}
         </ul>

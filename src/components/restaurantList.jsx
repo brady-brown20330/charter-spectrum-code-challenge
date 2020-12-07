@@ -27,15 +27,8 @@ const handlePrevious = () => {
   console.log(pageRange)
   }
 
-//  if (props.list.length < 1) {
-//    return (
-//      <h1>Looks like we couldnt find any matches. Try resetting filters and try again</h1>
-//    )
-//  }
   return (
     <div>
-      <button onClick={function () { handlePrevious() }}>Previous</button>
-      <button onClick={function () { handleNext() }}>Next</button>
         <table className="content-table">
           <thead>
             <tr>
@@ -52,6 +45,10 @@ const handlePrevious = () => {
       )) : <h2 style={{textAlign: "center"}}>Looks like we couldnt find any matches. Try resetting filters and try again</h2>}
         </tbody>
         </table>
+        <div className="footer">
+        <button className="page" onClick={function () { handlePrevious() }}>Previous</button>
+      <button className="page" onClick={function () { handleNext() }}>Next</button>
+        </div>
     </div>
       )
 

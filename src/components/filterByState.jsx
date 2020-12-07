@@ -36,7 +36,7 @@ getAllStates()
       </button>
       <div className="dropdown">
         <ul>
-          {states.map((item) => (
+          {states.map((item, key) => (
             <li onClick={function() { props.handleListItemClick(item, "state") }}>{item}</li>
           ))}
         </ul>

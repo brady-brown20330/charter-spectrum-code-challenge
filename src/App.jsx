@@ -12,7 +12,6 @@ import SearchField from './components/searchField.jsx';
 const App = () => {
 const [restaurants, setRestaurants] = useState([]);
 const [inputText, setInputText] = useState('');
-// const [pagedRestaurants, setPagedrestaurants] = useState([])
 
 //retrieves all restaurants and sorts them alphabetically by name
 const retrieveAllRestaurants = () => {
@@ -30,10 +29,7 @@ const retrieveAllRestaurants = () => {
     setRestaurants(data.data)
     return data.data
   })
-  // .then(data => setPagedrestaurants(data.slice(0, 10)))
 }
-
-/*must derive pages from already fetched restaurants list; filters search restaurants in state*/
 
   //initial render
   useEffect(() => {
@@ -68,15 +64,6 @@ const retrieveAllRestaurants = () => {
     }
   }
 
-  // let start = 0;
-  // let end = 10;
-  // //handle next button
-  // const handleNext = () => {
-  //   start += 10
-  //   end += 10
-  //   setPagedrestaurants(restaurants.slice(start, end))
-  // }
-
   return (
     <div>
       <h1>Search Our Spectrum of Restaurants:</h1>
@@ -87,7 +74,6 @@ const retrieveAllRestaurants = () => {
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>
      </div>
       <RestaurantList list={restaurants}/>
-      {/* <button onClick={function () { handleNext() }}>Next</button> */}
     </div>
 
   );
