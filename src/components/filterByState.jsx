@@ -13,7 +13,6 @@ const handleClick = () => {
 
 const getAllStates = () => {
   for (var i = 0; i < props.list.length; i++) {
-    console.log('an entry: ', props.list[i].state)
     if (states.indexOf(props.list[i].state) === -1) {
       states.push(props.list[i].state)
     }

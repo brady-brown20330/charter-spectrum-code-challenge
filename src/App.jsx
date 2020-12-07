@@ -12,6 +12,7 @@ import SearchField from './components/searchField.jsx';
 const App = () => {
 const [restaurants, setRestaurants] = useState([]);
 const [inputText, setInputText] = useState('');
+// const [pagedRestaurants, setPagedrestaurants] = useState([])
 
 //retrieves all restaurants and sorts them alphabetically by name
 const retrieveAllRestaurants = () => {
@@ -27,22 +28,33 @@ const retrieveAllRestaurants = () => {
       return 0;
   })
     setRestaurants(data.data)
+    return data.data
   })
+  // .then(data => setPagedrestaurants(data.slice(0, 10)))
 }
-//initial render
+
+/*must derive pages from already fetched restaurants list; filters search restaurants in state*/
+
+  //initial render
   useEffect(() => {
     retrieveAllRestaurants()
   }, [])
+
+
   //triggers a filter based off of the item that was clicked
   const handleListItemClick = (item, searchString) => {
     console.log(item)
     const filteredRestaurants = restaurants.filter(row => row[searchString].includes(item))
     setRestaurants(filteredRestaurants)
   }
+
+
   //updates state based on what is typed in the input field
   const handleSearchInput = (e) => {
     setInputText(e.target.value)
   }
+
+
   //submit button handler
   const handleSubmit = () => {
     if (inputText === '') {
@@ -56,6 +68,15 @@ const retrieveAllRestaurants = () => {
     }
   }
 
+  // let start = 0;
+  // let end = 10;
+  // //handle next button
+  // const handleNext = () => {
+  //   start += 10
+  //   end += 10
+  //   setPagedrestaurants(restaurants.slice(start, end))
+  // }
+
   return (
     <div>
       <h1>Search Our Spectrum of Restaurants:</h1>
@@ -66,6 +87,7 @@ const retrieveAllRestaurants = () => {
       <FilterByGenre list={restaurants} handleListItemClick={handleListItemClick}/>
      </div>
       <RestaurantList list={restaurants}/>
+      {/* <button onClick={function () { handleNext() }}>Next</button> */}
     </div>
 
   );
