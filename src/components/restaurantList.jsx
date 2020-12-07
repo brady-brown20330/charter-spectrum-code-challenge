@@ -2,12 +2,35 @@ import React, { useEffect, useState } from "react";
 import RestaurantListItem from './restaurantListItem.jsx';
 
 const RestaurantList = (props) => {
+
 const [pageRange, setPageRange] = useState([0, 10])
+
+const handleNext = () => {
+  let start = pageRange[0];
+  let end = pageRange[1];
+  if (end >= props.list.length) {
+    alert('End of Collection')
+    return;
+  }
+  setPageRange([start+=10, end+=10])
+  console.log(pageRange)
+}
+
+const handlePrevious = () => {
+  let start = pageRange[0];
+  let end = pageRange[1];
+  if (start === 0) {
+    alert('Beginning of collection')
+    return;
+  }
+  setPageRange([start-=10, end-=10])
+  console.log(pageRange)
+  }
 
   return (
     <div>
-      <button onClick={function () { setPageRange([0, 10]) }}>Previous</button>
-      <button onClick={function () { setPageRange([10, 20]) }}>Next</button>
+      <button onClick={function () { handlePrevious() }}>Previous</button>
+      <button onClick={function () { handleNext() }}>Next</button>
         <table className="content-table">
           <thead>
             <tr>
