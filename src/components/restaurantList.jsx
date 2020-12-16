@@ -28,7 +28,7 @@ const handlePrevious = () => {
   }
 
   return (
-    <div>
+    <div className="center">
         <table className="content-table">
           <thead>
             <tr>
